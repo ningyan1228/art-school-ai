@@ -1,0 +1,18 @@
+services:
+  api:
+    build: .
+    restart: unless-stopped
+    environment:
+      PORT: 3000
+      VIRTUAL_HOST: art-school-ai-api.gjsx.uno
+      LETSENCRYPT_HOST: art-school-ai-api.gjsx.uno
+      LETSENCRYPT_EMAIL: ${LETSENCRYPT_EMAIL}
+      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS}
+      SILICONFLOW_API_KEY: ${SILICONFLOW_API_KEY}
+      SILICONFLOW_VISION_MODEL: ${SILICONFLOW_VISION_MODEL}
+    networks:
+      - web
+
+networks:
+  web:
+    external: true
